@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import TodoList from "./components/TodoList";
 import TodoFilter from "./components/TodoFilter";
+import AddTodo from "./components/AddTodo";
 import { TodoContext } from "./contexts";
 
 const AppGrid = styled.div`
@@ -49,6 +50,11 @@ function App() {
           <TodoFilter />
         </Sidebar>
         <Main>
+          <AddTodo
+            onTodoAdded={newTodo => {
+              setTodos([...todos, newTodo]);
+            }}
+          />
           <TodoList todos={todos} />
         </Main>
         <Footer>footer</Footer>
