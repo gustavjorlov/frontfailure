@@ -8,7 +8,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
+      - name: Install dependencies
+        run: yarn install
       - name: Run tests
-        run: |
-          yarn install
-          npm run test
+        run: npm run test -- * --no-watch
