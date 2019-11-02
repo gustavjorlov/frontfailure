@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import TodoList from "./components/TodoList";
 import TodoFilter from "./components/TodoFilter";
@@ -32,6 +32,13 @@ const Footer = styled.div`
   border-bottom: 1px solid #888;
 `;
 
+export const appendUniqueTodo = (todoList, todoItem) => {
+  return todoList.find(item => item.id === todoItem.id) ||
+    todoList.find(item => item.text === todoItem.text)
+    ? todoList
+    : [...todoList, todoItem];
+};
+
 function App() {
   const [todos, setTodos] = useState([]);
   return (
@@ -44,7 +51,7 @@ function App() {
         <Main>
           <AddTodo
             onTodoAdded={newTodo => {
-              setTodos([...todos, newTodo]);
+              setTodos(appendUniqueTodo(todos, newTodo));
             }}
           />
           <TodoList todos={todos} />
