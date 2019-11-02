@@ -4,7 +4,7 @@ export default ({ todos }) => {
   return (
     <ul>
       {todos.map(item => {
-        return <li key={item.id}>{item.label}</li>;
+        return <li key={item.id}>{item.text}</li>;
       })}
     </ul>
   );

@@ -1,12 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default ({ onTodoAdded }) => {
+  const [todoText, setTodoText] = useState("");
 
-  // use state to give todo label. And invent a uniqu id
   return (
     <div>
-      <input type="text" placeholder="What's to do?"></input>
-      <button onClick={onTodoAdded}>Add</button>
+      <input
+        type="text"
+        placeholder="What's to do?"
+        onChange={e => {
+          setTodoText(e.target.value);
+        }}
+        value={todoText}
+      ></input>
+      <button
+        disabled={todoText === ""}
+        onClick={() => {
+          onTodoAdded({
+            id: `id_${Math.round(Math.random() * 1000)}`,
+            text: todoText
+          });
+          setTodoText("");
+        }}
+      >
+        Add
+      </button>
     </div>
   );
 };

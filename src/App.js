@@ -36,10 +36,10 @@ function App() {
   const [todos, setTodos] = useState([]);
   useEffect(() => {
     setTodos([
-      { id: 1, label: "Hej" },
-      { id: 2, label: "Hå" },
-      { id: 3, label: "I" },
-      { id: 4, label: "Lingonskogen" }
+      { id: 1, text: "Hej" },
+      { id: 2, text: "Hå" },
+      { id: 3, text: "I" },
+      { id: 4, text: "Lingonskogen" }
     ]);
   }, []);
   return (
