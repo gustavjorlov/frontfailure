@@ -18,7 +18,8 @@ export default ({ onTodoAdded }) => {
         onClick={() => {
           onTodoAdded({
             id: `id_${Math.round(Math.random() * 1000)}`,
-            text: todoText
+            text: todoText,
+            done: false
           });
           setTodoText("");
         }}
