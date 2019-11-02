@@ -10,8 +10,14 @@ try {
   // Get the JSON webhook payload for the event that triggered the workflow
   // const payload = JSON.stringify(github.context.payload, undefined, 2);
 
-  console.log("Commit Message", github.context.payload.head_commit.message);
-
+  const idMatch = github.context.payload.head_commit.message.match(
+    /\[[a-z0-9-]*]\s.*/
+  );
+  if (!idMatch) {
+    core.setFailed(
+      "The commit message need to match: [id-of-sorts] the rest of the message"
+    );
+  }
   // console.log(`The event payload: ${payload}`);
 } catch (error) {
   core.setFailed(error.message);
