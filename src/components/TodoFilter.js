@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
 const FilterButton = styled.li`
@@ -17,25 +17,24 @@ const FilterButton = styled.li`
   }
 `;
 
-export default () => {
-  const [activeFilter, setActiveFilter] = useState(0);
+export default ({ filter, onSelect }) => {
   return (
     <ul>
       <FilterButton
-        onClick={setActiveFilter.bind(null, 0)}
-        active={activeFilter === 0}
+        onClick={onSelect.bind(null, "all")}
+        active={filter === "all"}
       >
         All
       </FilterButton>
       <FilterButton
-        onClick={setActiveFilter.bind(null, 1)}
-        active={activeFilter === 1}
+        onClick={onSelect.bind(null, "active")}
+        active={filter === "active"}
       >
         Active
       </FilterButton>
       <FilterButton
-        onClick={setActiveFilter.bind(null, 2)}
-        active={activeFilter === 2}
+        onClick={onSelect.bind(null, "done")}
+        active={filter === "done"}
       >
         Done
       </FilterButton>

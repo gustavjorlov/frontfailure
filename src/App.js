@@ -39,14 +39,33 @@ export const appendUniqueTodo = (todoList, todoItem) => {
     : [...todoList, todoItem];
 };
 
-function App() {
-  const [todos, setTodos] = useState([]);
+const App = () => {
+  const [todos, setTodos] = useState(localStorage.getItem("todos") || []);
+  const [filter, setFilter] = useState("all");
+
+  const getFilteredTodos = () => {
+    switch (filter) {
+      case "all":
+        return todos;
+      case "active":
+        return todos.filter(todo => !todo.done);
+      case "done":
+        return todos.filter(todo => todo.done);
+      default:
+        return todos;
+    }
+  };
+
+  const toggleTodo = todo => {
+    setTodos(todos.map(t => (t.id === todo.id ? { ...t, done: !t.done } : t)));
+  };
+
   return (
     <TodoContext.Provider value={todos}>
       <AppGrid>
         <Header>header</Header>
         <Sidebar>
-          <TodoFilter />
+          <TodoFilter filter={filter} onSelect={setFilter} />
         </Sidebar>
         <Main>
           <AddTodo
@@ -54,12 +73,12 @@ function App() {
               setTodos(appendUniqueTodo(todos, newTodo));
             }}
           />
-          <TodoList todos={todos} />
+          <TodoList todos={getFilteredTodos()} onToggleTodo={toggleTodo} />
         </Main>
         <Footer>footer</Footer>
       </AppGrid>
     </TodoContext.Provider>
   );
-}
+};
 
 export default App;

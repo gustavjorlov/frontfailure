@@ -5,12 +5,12 @@ const Item = styled.p`
   text-decoration: ${props => (props.done ? `line-through` : `none`)};
 `;
 
-export default ({ todos }) => {
+export default ({ todos, onToggleTodo }) => {
   return (
     <ul>
       {todos.map(item => {
         return (
-          <li key={item.id}>
+          <li key={item.id} onClick={onToggleTodo.bind(null, item)}>
             <Item done={item.done}>{item.text}</Item>
           </li>
         );
