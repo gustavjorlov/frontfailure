@@ -15,7 +15,8 @@ try {
   );
   if (!idMatch) {
     core.setFailed(
-      "The commit message need to match: [id-of-sorts] the rest of the message"
+      "The commit message need to match: [id-of-sorts] the rest of the message\nFound " +
+        github.context.payload.head_commit.message
     );
   }
   // console.log(`The event payload: ${payload}`);
