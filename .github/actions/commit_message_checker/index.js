@@ -11,7 +11,7 @@ try {
   // const payload = JSON.stringify(github.context.payload, undefined, 2);
 
   const idMatch = github.context.payload.head_commit.message.match(
-    /\[[a-z0-9-]*]\s.*/
+    /\[[a-zA-Z0-9-]*]\s.*/
   );
   if (!idMatch) {
     core.setFailed(
