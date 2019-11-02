@@ -8,6 +8,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-      - name: Commit message check
+      - name: Install dependencies
         run: yarn install
+      - name: Commit message check
         uses: ./.github/actions/commit_message_checker # Uses an action in the root directory
