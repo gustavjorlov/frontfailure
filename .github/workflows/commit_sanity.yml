@@ -1,0 +1,12 @@
+name: Commit sanity
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Commit message check
+        uses: ./.github/actions/commit_message_checker # Uses an action in the root directory

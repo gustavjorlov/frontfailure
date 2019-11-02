@@ -1,0 +1,5 @@
+name: "Commit message checker"
+description: "Fails on a commit message not having an id in brackets"
+runs:
+  using: "node12"
+  main: "index.js"
