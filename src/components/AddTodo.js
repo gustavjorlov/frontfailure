@@ -1,19 +1,33 @@
 import React, { useState } from "react";
+import styled from "styled-components";
+
+const Input = styled.input`
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 16px;
+`;
+
+const Button = styled.button`
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 16px;
+  margin-left: 16px;
+`;
 
 export default ({ onTodoAdded }) => {
   const [todoText, setTodoText] = useState("");
 
   return (
     <div>
-      <input
+      <Input
         type="text"
         placeholder="What's to do?"
         onChange={e => {
           setTodoText(e.target.value);
         }}
         value={todoText}
-      ></input>
-      <button
+      ></Input>
+      <Button
         disabled={todoText === ""}
         onClick={() => {
           onTodoAdded({
@@ -25,7 +39,7 @@ export default ({ onTodoAdded }) => {
         }}
       >
         Add
-      </button>
+      </Button>
     </div>
   );
 };

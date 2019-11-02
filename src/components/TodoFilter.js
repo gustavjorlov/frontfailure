@@ -1,6 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 
+const List = styled.ul`
+  padding: 0px;
+`;
+
 const FilterButton = styled.li`
   list-style: none;
   cursor: pointer;
@@ -19,25 +23,28 @@ const FilterButton = styled.li`
 
 export default ({ filter, onSelect }) => {
   return (
-    <ul>
-      <FilterButton
-        onClick={onSelect.bind(null, "all")}
-        active={filter === "all"}
-      >
-        All
-      </FilterButton>
-      <FilterButton
-        onClick={onSelect.bind(null, "active")}
-        active={filter === "active"}
-      >
-        Active
-      </FilterButton>
-      <FilterButton
-        onClick={onSelect.bind(null, "done")}
-        active={filter === "done"}
-      >
-        Done
-      </FilterButton>
-    </ul>
+    <React.Fragment>
+      <List>
+        <FilterButton
+          onClick={onSelect.bind(null, "all")}
+          active={filter === "all"}
+        >
+          All
+        </FilterButton>
+        <FilterButton
+          onClick={onSelect.bind(null, "active")}
+          active={filter === "active"}
+        >
+          Active
+        </FilterButton>
+        <FilterButton
+          onClick={onSelect.bind(null, "done")}
+          active={filter === "done"}
+        >
+          Done
+        </FilterButton>
+      </List>
+      <button>Clear Done todos</button>
+    </React.Fragment>
   );
 };
