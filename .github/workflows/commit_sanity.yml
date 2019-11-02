@@ -9,4 +9,5 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Commit message check
+        run: yarn install
         uses: ./.github/actions/commit_message_checker # Uses an action in the root directory
