@@ -34,15 +34,6 @@ const Footer = styled.div`
 
 function App() {
   const [todos, setTodos] = useState([]);
-  useEffect(() => {
-    setTodos([
-      { id: 1, text: "Hej", done: false },
-      { id: 1, text: "Och", done: true },
-      { id: 2, text: "Hå", done: false },
-      { id: 3, text: "I", done: false },
-      { id: 4, text: "Lingonskogen", done: true }
-    ]);
-  }, []);
   return (
     <TodoContext.Provider value={todos}>
       <AppGrid>
