@@ -11,7 +11,7 @@ jobs:
       - name: Install dependencies
         run: yarn install
       - name: S3 Deploy
-        uses: gustavjorlov/S3StageDeployAction@v1
+        uses: gustavjorlov/S3StageDeployAction@2e8bfe848c2e5d018037ee984c088318341ec55d
         with:
           s3-bucket: "one_1"
           access-key-id: "two"
