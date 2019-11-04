@@ -11,8 +11,11 @@ jobs:
       - name: Install dependencies
         run: yarn install
       - name: S3 Deploy
+        id: deploy_step
         uses: gustavjorlov/S3StageDeployAction@2e8bfe848c2e5d018037ee984c088318341ec55d
         with:
           s3-bucket: "one_1"
           access-key-id: "two"
           secret-access-key: "three"
+      - name: Deploy Output
+        run: echo "${{ steps.deploy_step.outputs.s3_url }}""
