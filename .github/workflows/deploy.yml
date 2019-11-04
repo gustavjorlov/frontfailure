@@ -1,0 +1,18 @@
+name: S3 Deploy
+
+on: [pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Install dependencies
+        run: yarn install
+      - name: S3 Deploy
+        uses: gustavjorlov/S3StageDeployAction
+        with:
+          s3-bucket: "one"
+          access-key-id: "two"
+          secret-access-key: "three"
