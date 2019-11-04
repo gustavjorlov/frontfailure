@@ -8,8 +8,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-      - name: Install dependencies
-        run: yarn install
+      # - name: Install dependencies
+      #   run: yarn install
       - name: S3 Deploy
         id: deploy_step
         uses: gustavjorlov/S3StageDeployAction@98b68060466a3195bad8fa14853e6504ece6b22d
