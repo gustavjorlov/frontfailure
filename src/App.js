@@ -39,7 +39,7 @@ function App() {
       { id: 1, text: "Hej" },
       { id: 2, text: "Hå" },
       { id: 3, text: "I" },
-      { id: 4, text: "Lingonskogen" }
+      { id: 4, text: "Lingonskogens" }
     ]);
   }, []);
   return (
