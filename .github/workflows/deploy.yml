@@ -13,6 +13,6 @@ jobs:
       - name: S3 Deploy
         uses: gustavjorlov/S3StageDeployAction
         with:
-          s3-bucket: "one"
+          s3-bucket: "one_1"
           access-key-id: "two"
           secret-access-key: "three"
