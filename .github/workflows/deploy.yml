@@ -18,4 +18,4 @@ jobs:
           access-key-id: "two"
           secret-access-key: "three"
       - name: Deploy Output
-        run: echo "${{ steps.deploy_step.outputs.s3_url }}""
+        run: echo "${{ steps.deploy_step.outputs.s3_url }}"
