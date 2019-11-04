@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import TodoList from "./components/TodoList";
 import TodoFilter from "./components/TodoFilter";
@@ -32,35 +32,56 @@ const Footer = styled.div`
   border-bottom: 1px solid #888;
 `;
 
-function App() {
-  const [todos, setTodos] = useState([]);
-  useEffect(() => {
-    setTodos([
-      { id: 1, text: "Hej" },
-      { id: 2, text: "Hå" },
-      { id: 3, text: "I" },
-      { id: 4, text: "Lingonskogen" }
-    ]);
-  }, []);
+export const appendUniqueTodo = (todoList, todoItem) => {
+  return todoList.find(item => item.id === todoItem.id) ||
+    todoList.find(item => item.text === todoItem.text)
+    ? todoList
+    : [...todoList, todoItem];
+};
+
+const getFilteredTodos = (_todos, _filter) => {
+  switch (_filter) {
+    case "all":
+      return _todos;
+    case "active":
+      return _todos.filter(todo => !todo.done);
+    case "done":
+      return _todos.filter(todo => todo.done);
+    default:
+      return _todos;
+  }
+};
+
+const App = () => {
+  const [todos, setTodos] = useState(localStorage.getItem("todos") || []);
+  const [filter, setFilter] = useState("all");
+
+  const toggleTodo = todo => {
+    setTodos(todos.map(t => (t.id === todo.id ? { ...t, done: !t.done } : t)));
+  };
+
   return (
     <TodoContext.Provider value={todos}>
       <AppGrid>
         <Header>header</Header>
         <Sidebar>
-          <TodoFilter />
+          <TodoFilter filter={filter} onSelect={setFilter} />
         </Sidebar>
         <Main>
           <AddTodo
             onTodoAdded={newTodo => {
-              setTodos([...todos, newTodo]);
+              setTodos(appendUniqueTodo(todos, newTodo));
             }}
           />
-          <TodoList todos={todos} />
+          <TodoList
+            todos={getFilteredTodos(todos, filter)}
+            onToggleTodo={toggleTodo}
+          />
         </Main>
         <Footer>footer</Footer>
       </AppGrid>
     </TodoContext.Provider>
   );
-}
+};
 
 export default App;
