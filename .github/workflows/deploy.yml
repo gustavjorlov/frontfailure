@@ -8,11 +8,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-      # - name: Install dependencies
-      #   run: yarn install
+      - name: Install dependencies
+        run: yarn install
+      - name: Build project
+        run: npm run build
       - name: S3 Deploy
         id: deploy_step
-        uses: gustavjorlov/S3StageDeployAction@7e8c7a8128d659025303b95fc73d92dda903ee42
+        uses: gustavjorlov/S3StageDeployAction@851a4a472b11e49b79dd64982a4dc7d9e73ea31e
         with:
           s3-bucket: "frontfailure"
           access-key-id: ${{secrets.AWS_ACCESS_KEY_ID}}
