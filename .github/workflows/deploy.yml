@@ -14,8 +14,8 @@ jobs:
         id: deploy_step
         uses: gustavjorlov/S3StageDeployAction@2e8bfe848c2e5d018037ee984c088318341ec55d
         with:
-          s3-bucket: "one_1"
-          access-key-id: "two"
-          secret-access-key: "three"
+          s3-bucket: "frontfailure"
+          access-key-id: ${{secrets.AWS_ACCESS_KEY_ID}}
+          secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
       - name: Deploy Output
         run: echo "${{ steps.deploy_step.outputs.s3_url }}"
