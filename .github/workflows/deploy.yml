@@ -12,7 +12,7 @@ jobs:
         run: yarn install
       - name: S3 Deploy
         id: deploy_step
-        uses: gustavjorlov/S3StageDeployAction@2e8bfe848c2e5d018037ee984c088318341ec55d
+        uses: gustavjorlov/S3StageDeployAction@b59b0a26e88dae8d3d24e18c8aa812e4598f6302
         with:
           s3-bucket: "frontfailure"
           access-key-id: ${{secrets.AWS_ACCESS_KEY_ID}}
