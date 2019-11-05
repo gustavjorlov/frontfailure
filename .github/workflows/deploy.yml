@@ -14,7 +14,7 @@ jobs:
         run: npm run build
       - name: S3 Deploy
         id: deploy_step
-        uses: gustavjorlov/S3StageDeployAction@923a8a2
+        uses: gustavjorlov/S3StageDeployAction@124e8ab
         with:
           s3-bucket: "frontfailure"
           access-key-id: ${{secrets.AWS_ACCESS_KEY_ID}}
