@@ -1,0 +1,23 @@
+name: S3 Deploy
+
+on: [pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Install dependencies
+        run: yarn install
+      - name: Build project
+        run: npm run build
+      - name: S3 Deploy
+        id: deploy_step
+        uses: gustavjorlov/S3StageDeployAction@e81de8c
+        with:
+          s3-bucket: "frontfailure"
+          access-key-id: ${{secrets.AWS_ACCESS_KEY_ID}}
+          secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+      - name: Deploy Output
+        run: echo "${{ steps.deploy_step.outputs.s3_url }}"
