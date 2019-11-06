@@ -7,7 +7,7 @@ try {
   console.log(`Hello ${nameToGreet}!`);
   const time = new Date().toTimeString();
   core.setOutput("time", time);
-  // Get the JSON webhook payload for the event that triggered the workflow
+  // Get the JSON webhook payload for the event that  triggered the workflow
   // const payload = JSON.stringify(github.context.payload, undefined, 2);
 
   const idMatch = github.context.payload.head_commit.message.match(

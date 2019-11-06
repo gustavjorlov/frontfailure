@@ -12,3 +12,8 @@ jobs:
         run: yarn install
       - name: Run tests
         run: npm run test:nowatch
+      - name: Notify slack
+        uses: gustavjorlov/slacker@1d17481
+        with:
+          message: "Yey, tests are passing!"
+          slack-url: ${{secrets.SLACK_URL}}
