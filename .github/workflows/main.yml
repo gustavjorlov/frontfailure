@@ -13,7 +13,7 @@ jobs:
       - name: Run tests
         run: npm run test:nowatch
       - name: Notify slack
-        uses: gustavjorlov/slacker@e86696d2e3bfb55f5750d083932c2954b9a08b4c
+        uses: gustavjorlov/slacker@8d857cb
         with:
           message: Yey, tests are passing!
           slack-url: https://hooks.slack.com/services/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
