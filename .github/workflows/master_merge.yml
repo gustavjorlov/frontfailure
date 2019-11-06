@@ -1,0 +1,17 @@
+name: Merge to master
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  notify_slack:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Notify slack
+        uses: gustavjorlov/slacker@1d17481
+        with:
+          message: "Seems like someone merged to master 🍀"
+          slack-url: ${{secrets.SLACK_URL}}
