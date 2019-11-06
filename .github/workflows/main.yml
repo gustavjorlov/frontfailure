@@ -16,4 +16,4 @@ jobs:
         uses: gustavjorlov/slacker@39cb5d6
         with:
           message: Yey, tests are passing!
-          slack-url: ${{secrets.SLACK_URL}}
+          slack-url: https://hooks.slack.com/services/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
