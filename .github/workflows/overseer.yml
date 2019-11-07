@@ -1,0 +1,13 @@
+name: I see you
+
+on: [proejct_card]
+
+jobs:
+  notify_slack:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify Slack
+        uses: gustavjorlov/slacker@e74d5f0
+        with:
+          message: "..."
+          slack-url: ${{secrets.SLACK_URL}}
