@@ -9,7 +9,7 @@ jobs:
       - name: Notify Slack
         uses: gustavjorlov/slacker@e74d5f0
         with:
-          message: "..."
+          message: ${{github.actor}} ${{github.event.action}} card, ${{github.event.project_card.note}}
           slack-url: ${{secrets.SLACK_URL}}
   dumper:
     runs-on: ubuntu-16.04
