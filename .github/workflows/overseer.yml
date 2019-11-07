@@ -1,6 +1,6 @@
 name: I see you
 
-on: [proejct_card]
+on: [project_card]
 
 jobs:
   notify_slack:
