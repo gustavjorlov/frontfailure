@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Notify slack
-        uses: gustavjorlov/slacker@1d17481
+        uses: gustavjorlov/slacker@e74d5f0
         with:
           message: "Seems like someone merged to master 🍀"
           slack-url: ${{secrets.SLACK_URL}}

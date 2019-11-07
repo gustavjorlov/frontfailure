@@ -3,7 +3,7 @@ name: Commit sanity
 on: [push]
 
 jobs:
-  build:
+  check_message:
     runs-on: ubuntu-latest
 
     steps:
@@ -11,4 +11,4 @@ jobs:
       - name: Install dependencies
         run: yarn install
       - name: Commit message check
-        uses: ./.github/actions/commit_message_checker # Uses an action in the root directory
+        uses: ./.github/actions/commit_message_checker
