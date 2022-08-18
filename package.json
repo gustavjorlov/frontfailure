@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@actions/core": "^1.2.0",
+    "@actions/core": "^1.9.1",
     "@actions/github": "^1.1.0",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
